@@ -50,12 +50,6 @@ export default function Home() {
                Hi, I'm{' '}
                <span className="gradient-text">Krishna</span>
              </h1>
-             <a 
-               href="mailto:krishna.goa1708@gmail.com"
-               className="text-sm text-dark-500 dark:text-dark-400 mb-6 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
-             >
-               krishna.goa1708@gmail.com
-             </a>
             <p className="text-xl md:text-2xl text-dark-600 dark:text-dark-300 mb-8 max-w-2xl mx-auto">
               A passionate Computer Science student and developer crafting innovative solutions with AI and machine learning
             </p>

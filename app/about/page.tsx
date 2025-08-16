@@ -90,7 +90,7 @@ export default function About() {
               <h2 className="text-3xl font-bold mb-6">Who I Am</h2>
               <p className="text-lg text-dark-600 dark:text-dark-300 mb-6">
                 I'm a dedicated Computer Science student who believes in the power of AI and machine learning to solve real-world problems. 
-                With a strong academic background (CGPA: 8.72/10) and selection in Samsung Innovation Campus Programme, 
+                With a strong academic background and selection in Samsung Innovation Campus Programme, 
                 I've had the privilege of working on diverse projects that have shaped my understanding of both technical and practical applications.
               </p>
               <p className="text-lg text-dark-600 dark:text-dark-300 mb-8">
