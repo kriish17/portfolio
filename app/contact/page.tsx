@@ -1,9 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, MessageCircle, Code } from 'lucide-react'
 import Navigation from '@/components/Navigation'
+import emailjs from 'emailjs-com';
+import { emailjsConfig } from '@/lib/emailjs-config';
+
+// Initialize EmailJS with your public key
+emailjs.init(emailjsConfig.publicKey);
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,6 +18,7 @@ export default function Contact() {
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const socialLinks = [
     { name: 'GitHub', icon: Github, href: 'https://github.com/kriish17', color: 'hover:text-gray-700' },
@@ -52,25 +58,55 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData)
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    })
-    setIsSubmitting(false)
-    
-    // Show success message (you can implement a toast notification here)
-    alert('Thank you for your message! I\'ll get back to you soon.')
+    setSubmitStatus('idle')
+
+    // Check if EmailJS is properly configured
+    if (emailjsConfig.publicKey === "YOUR_PUBLIC_KEY_HERE" || 
+        emailjsConfig.serviceId === "YOUR_SERVICE_ID_HERE" ||
+        emailjsConfig.templateId === "YOUR_TEMPLATE_ID_HERE" ||
+        emailjsConfig.userId === "YOUR_USER_ID_HERE") {
+      setSubmitStatus('error')
+      setIsSubmitting(false)
+      return
+    }
+
+    try {
+      // Using EmailJS to send the email
+      const result = await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        {
+          to_name: 'Krishna',
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'krishna.goa1708@gmail.com'
+        },
+        emailjsConfig.userId
+      );
+
+      if (result.status === 200) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('EmailJS error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
+
+  // Reset status after 5 seconds
+  useEffect(() => {
+    if (submitStatus !== 'idle') {
+      const timer = setTimeout(() => setSubmitStatus('idle'), 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [submitStatus])
 
   return (
     <div className="min-h-screen bg-white dark:bg-dark-900">
@@ -108,6 +144,43 @@ export default function Contact() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold mb-8">Send Me a Message</h2>
+              
+              {/* Configuration Warning */}
+              {(emailjsConfig.publicKey === "YOUR_PUBLIC_KEY_HERE" || 
+                emailjsConfig.serviceId === "YOUR_SERVICE_ID_HERE" ||
+                emailjsConfig.templateId === "YOUR_TEMPLATE_ID_HERE" ||
+                emailjsConfig.userId === "YOUR_USER_ID_HERE") && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded-lg"
+                >
+                  ⚠️ <strong>Setup Required:</strong> To make the contact form work, you need to configure EmailJS. 
+                  Check the <code className="bg-yellow-200 px-1 rounded">lib/emailjs-config.ts</code> file for instructions.
+                </motion.div>
+              )}
+              
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
+                >
+                  ✅ Message sent successfully! I'll get back to you soon.
+                </motion.div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
+                >
+                  ❌ Failed to send message. Please try again or email me directly at krishna.goa1708@gmail.com
+                </motion.div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -310,3 +383,4 @@ export default function Contact() {
     </div>
   )
 }
+
