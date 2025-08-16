@@ -76,12 +76,39 @@ export default function Contact() {
         emailjsConfig.serviceId,
         emailjsConfig.templateId,
         {
+          // Sender Information (who is contacting you)
+          sender_name: formData.name,
+          sender_email: formData.email,
+          sender_subject: formData.subject,
+          sender_message: formData.message,
+          
+          // Recipient Information (you)
           to_name: 'Krishna',
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_email: 'krishna.goa1708@gmail.com'
+          to_email: 'krishna.goa1708@gmail.com',
+          
+          // Additional context
+          website: 'krishna17.xyz',
+          timestamp: new Date().toLocaleString('en-US', { 
+            timeZone: 'Asia/Kolkata',
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          }),
+          
+          // Formatted message for better readability
+          formatted_message: `
+Name: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+
+---
+Sent from your portfolio website (krishna17.xyz)
+          `.trim()
         },
         emailjsConfig.userId
       );
