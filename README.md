@@ -1,8 +1,8 @@
-# Krishna R Kulkarni's Portfolio Website
+# https://www.krishna17.xyz/
 
 A modern, responsive portfolio website for Krishna R Kulkarni, a Computer Science student at RNS Institute of Technology and Samsung Innovation Campus trainee. Built with Next.js, React, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, and showcases AI/ML projects and skills.
 
-## 🌟 Features
+##  Features
 
 - **Modern Design**: Clean and professional design with smooth animations
 - **Responsive**: Fully responsive design that works on all devices
@@ -14,7 +14,7 @@ A modern, responsive portfolio website for Krishna R Kulkarni, a Computer Scienc
 - **Social Links**: Easy integration with social media profiles
 - **Smooth Animations**: Framer Motion animations for enhanced user experience
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -46,7 +46,7 @@ A modern, responsive portfolio website for Krishna R Kulkarni, a Computer Scienc
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000) to see your portfolio.
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 krishna-portfolio/
@@ -66,7 +66,7 @@ krishna-portfolio/
 └── README.md             # This file
 ```
 
-## 🎨 Customization
+##  Customization
 
 ### Personal Information
 
@@ -120,7 +120,7 @@ To deploy to your domain `krishna17.xyz`:
    - Update DNS settings
    - Configure SSL certificate
 
-## 🔧 Configuration
+##  Configuration
 
 ### Environment Variables
 
@@ -142,25 +142,25 @@ export const metadata: Metadata = {
 }
 ```
 
-## 📱 Responsive Design
+##  Responsive Design
 
 The website is fully responsive and optimized for:
 - Desktop (1200px+)
 - Tablet (768px - 1199px)
 - Mobile (320px - 767px)
 
-## 🌙 Dark Mode
+##  Dark Mode
 
 The website includes automatic dark mode detection and manual toggle functionality. The color scheme adapts to user preferences.
 
-## 🚀 Performance Optimization
+##  Performance Optimization
 
 - **Image Optimization**: Uses Next.js Image component for optimized images
 - **Code Splitting**: Automatic code splitting with Next.js
 - **Lazy Loading**: Images and components load as needed
 - **Minification**: Production builds are minified and optimized
 
-## 📊 Analytics (Optional)
+##  Analytics (Optional)
 
 To add analytics, you can integrate:
 
@@ -168,24 +168,24 @@ To add analytics, you can integrate:
 2. **Vercel Analytics**
 3. **Plausible Analytics**
 
-## 🔒 Security
+##  Security
 
 - Form validation and sanitization
 - Secure headers with Next.js
 - HTTPS enforcement in production
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
 4. Submit a pull request
 
-## 📄 License
+##  License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🆘 Support
+##  Support
 
 If you need help or have questions:
 
@@ -193,16 +193,5 @@ If you need help or have questions:
 2. Open an issue on GitHub
 3. Contact me through the contact form
 
-## 🎯 Roadmap
 
-Future improvements planned:
-- [ ] Blog section
-- [ ] Portfolio filtering improvements
-- [ ] More animation options
-- [ ] Internationalization (i18n)
-- [ ] CMS integration
-- [ ] Performance monitoring
 
----
-
-**Built with ❤️ using Next.js, React, TypeScript, and Tailwind CSS**
