@@ -1,6 +1,6 @@
 # https://www.krishna17.xyz/
 
-A modern, responsive portfolio website for Krishna R Kulkarni, a Computer Science student at RNS Institute of Technology and Samsung Innovation Campus trainee. Built with Next.js, React, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, and showcases AI/ML projects and skills.
+A modern, responsive portfolio website for Krishna R Kulkarni, a Computer Science student at RNS Institute of Technology and Samsung Innovation Campus trainee. Built with Next.js, React, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, and showcases skills.
 
 ##  Features
 
